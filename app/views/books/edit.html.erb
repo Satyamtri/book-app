@@ -1,0 +1,16 @@
+<div class="container" >
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="signup-form">
+        <div class="form shadow rounded">
+            <h1>Editing Book</h1>
+
+            <%= render 'form', book: @books %>
+
+            <%= link_to 'Show', book_path(@book) %> |
+            <%= link_to 'Back', books_path(@book) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>       

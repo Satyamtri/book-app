@@ -1,0 +1,15 @@
+<div class="container" >
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="signup-form">
+        <div class="form shadow rounded">
+            <h1>New Book</h1>
+
+            <%= render 'form', book: @book %>
+            </br>
+            <%= button_to 'Back', books_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>       

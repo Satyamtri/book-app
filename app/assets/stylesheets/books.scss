@@ -1,0 +1,81 @@
+// Place all the styles related to the books controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.search{
+    padding: 30px 0 ;
+    text-align: center;
+}
+.book{
+    margin-top: 30px;
+}
+
+.card{
+    // width: 280px;
+    // height: 340px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+    border-radius: 15px;
+    overflow: hidden;
+   
+    border: 2px solid #fff;
+}
+.card-body{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: -100%;
+    position: absolute;
+    background: #1f3d4738;
+    backdrop-filter: blur(5px);
+    border-radius: 15px;
+    color: #fff;
+    padding:  10px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+     transition: 1s;
+}
+.card-title{
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 500;
+    color: #fff;
+}
+.card-des{
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.card:hover .card-body{
+    right: 0;
+    // transform: scale(1.1);
+    // -webkit-transform: scale(1.1);
+    // -ms-transform: scale(1.1);
+}
+.image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    
+}
+
+.card-title a{
+    color: #fff;
+    text-decoration: none;
+}
+.box{
+    padding: 30px 30px;
+}
+
+
+.card-text{
+    height: 70px;
+    overflow: hidden; 
+}
+.social{
+    justify-content: center;
+    text-align: center;
+    padding: 10px 0;
+}
+

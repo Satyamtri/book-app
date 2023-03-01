@@ -1,0 +1,40 @@
+<section class="banner">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="welcome-text">
+          <h2>TO SUCCEED <br>YOU MUST READ</h2>
+          </br>
+          <p>I photograph very instinctively. I see how it is taken like that. I do not follow certain styles, philosophies or teachers.</p>
+
+        </div>
+        </br>
+        <div class="welcome-button">
+         <li class="nav-item"><%= link_to 'Create Account', new_user_registration_path, class: "btn btn-primary" %></li>
+        </div>
+      </div>
+      <div class="col-md-5">
+       <div class="welcome-image"id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="1000">
+              <%= image_tag("book1.jpg",class: 'd-block w-100') %>
+          </div>
+          <div class="carousel-item" data-bs-interval="1000">
+            <%= image_tag("book2.jpg",class: 'd-block w-100') %>
+          </div>
+          <div class="carousel-item" data-bs-interval="1000">
+            <%= image_tag("book3.jpg",class: 'd-block w-100') %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%# <%= render 'layouts/footer'%> 
+
+
+
+
+
+

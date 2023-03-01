@@ -1,0 +1,36 @@
+<div class="main-box">
+  <%= render :partial => "layouts/sidebar" %>
+  <div class="container-fluid">
+      <div class="search">
+          <%= search_form_for @q do |f|%>
+          <div class="search-area">
+           <div >
+              <%= f.search_field :email_cont, class: "search-box" %>
+              <%= f.submit class: "search-button " %>
+            </div>
+          </div>
+          <% end %>
+      </div>
+    <div class="box shadow rounded">
+      <table class="table table-hover table-striped table-bordered">
+          <thead>
+            <tr>
+                <th>Name</th> 
+                <th>Email</th> 
+                <th colspan="2">Actions</th> 
+            </tr>
+          </thead>
+        <tbody>
+          <% @users.each do |user| %>
+              <tr>
+                  <td><%= user.name %></td>
+                  <td><%= user.email %></td>
+                  <td><%= link_to "View" , user_path(user) %></td>
+                  <td><%= link_to "Remove" , user_path(user), method: :delete, data: {confirm: "are you sure!!"} %></td>
+              </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="signin-form">
+        <div class="form shadow rounded">
+          <%= form_with(url: generate_otp_path, method: :post) do |form| %>
+          <div class="field mt-3">
+            <%= form.label :contactnumber %></br>
+            <%= form.text_field :contactnumber, class:"form-control shadow rounded" %>
+          </div>
+          </br>
+            <%= form.submit "Send otp"  %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>        

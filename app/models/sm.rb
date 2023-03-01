@@ -1,0 +1,3 @@
+class Sm < ApplicationRecord
+    
+end

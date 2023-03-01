@@ -1,0 +1,31 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+
+.welcome-image{
+    margin-top: 140px;
+}
+
+
+.welcome-text{
+    margin-top: 140px;
+    color: white;
+}
+.welcome-text h2 {
+    font-size: 80px;
+    font-weight: 800;
+    // display: block;
+}
+
+.welcome-text p {
+    width: 85%;
+    font-size: 20px;
+    font-weight: 300;
+}
+.welcome-image img{
+    border-radius: 20px;
+    height: 350px;
+}
+
+
