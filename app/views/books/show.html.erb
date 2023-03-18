@@ -1,30 +1,25 @@
-
 <div class="container">
-<div class="box">
-  <div class="row justify-content-md-center">
-    <div class="col-8 mt-4">
-      <div class="cards text-center shadow mb-5 bg-body rounded">
-        <div class="cards-header fst-italic">
-          by <%= @book.user.name %>
-        </div>
-        <div class="cards-body">
-          <div class="row">
-            <div class="col-3">
-              <span><%= image_tag @book.avatar_thumbnail %></span>
-            </div>
-            
-            <div class="col-9">   
-              <p class="card1-text1 text-left"><%= simple_format(@book.bname) %></p>
-              <p class="card1-text1 text-left"><%= simple_format(@book.description) %></p>
-              <%= link_to 'Edit', edit_book_path %> |
-              <%= link_to 'Back', books_path %>
-          </div>
-        </div>
-        <div class="card1-footer text-muted">
-      
-        </div>
+   <div class="book-box">
+      <div class="row">
+         <div class="col-4" >
+            <p class="book"><%= image_tag @book.avatar_thumbnail %></p>
+         </div>
+         <div class="col-8" >
+            <strong><p class="card1-text1"><%= simple_format(@book.bname) %></p></strong>
+            <p class="card1-text1"><%= simple_format(@book.description) %></p>
+            <% if current_user.admin? %>
+               <%= link_to 'Edit', edit_book_path(@book), class: "btn btn-success" %> |
+               <%= link_to 'Back', books_path, class: "btn btn-success" %>
+            <% else %>
+               <%= link_to 'Back', books_path, class: "btn btn-success" %></br>
+               <strong><p class="mt-4">Price: <%= @book.price%> rs</p></strong>
+               <strong><p>Category: <%= @book.category.title%></p></strong>
+               
+               
+               <%= link_to 'Add to cart', addtocart_path(@book), method: :post, class:"btn btn-primary" %>
+               
+            <% end %>
+         </div>
       </div>
-    </div>
-  </div>
-  </div>
+   </div>
 </div>

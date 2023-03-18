@@ -6,6 +6,9 @@
     list-style: none;
     text-decoration: none;
 }
+body{
+    // background-color: gray;
+}
 #logo{
     float: left;
     font-size: 1.7rem;
@@ -67,12 +70,6 @@
     padding: 50px;
     justify-content: center;
 }
-.form{
-    // background: rgba(255, 255, 255, 0.2);
-    // width: 455px;
-    
-    // padding: 40px;
-}
 
 .main-box {
     display: flex;
@@ -98,5 +95,10 @@
     background-size: cover;
     display: block;
     border-radius: 100px;
-    
+}
+.address-text{
+    margin-right: 15px;
+}
+.cart-icon{
+    font-size: 24px;
 }

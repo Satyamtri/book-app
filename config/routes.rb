@@ -1,12 +1,24 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
-  
   mount Sidekiq::Web => '/sidekiq'
   resources :books
   resources :admins
   root to: 'pages#home'
   resources :pages
   resources :categories
+  resources :lineitems
+  resources :orders
+  
+  post 'checkout/create', to: "checkout#create"
+
+  post '/addtocart', to: "orders#add_to_cart"
+  get '/cart', to: "orders#cart"
+
+  post 'addaddress', to: "orders#add_address"
+  get '/addressform', to: "orders#address_form"
+  get '/address', to: "orders#address"
+
+  get '/payment', to: "orders#payment"
  
   devise_for :users, controllers: {
     sessions: 'users/sessions',

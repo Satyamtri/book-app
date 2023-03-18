@@ -1,0 +1,9 @@
+<% if @order.lineitems.count > 0 %>
+    <%= link_to cart_path do %> 
+    <i class="fa fa-shopping-cart"></i>
+    <%= @order.lineitems.count %>   
+    <%end%>
+    <% else %>
+     <a ><i class="fa fa-shopping-cart"></i> 0 </a>
+<% end %> 
+          
