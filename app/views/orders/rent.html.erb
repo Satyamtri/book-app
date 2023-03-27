@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="book-box">
+    <div class="row">
+        <div class="col-8">
+            <% @order.lineitems.each do |x|%>
+                <div class="row">
+                <div class="col-4" >
+                    <p><%= image_tag x.book.avatar_thumbnail %></p>
+                </div>
+                <div class="col-8" >
+                    <%= x.book.bname%>
+                    <p class="mt-4">Price: <%= x.book.price%> rs</p>
+                    <p>Category: <%= x.book.category.title%></p>
+                    <%= link_to "Remove" , lineitem_path(x), class: "btn btn-success", method: :delete, data: {confirm: "are you sure!!"} %>
+                </div>
+                </div>
+            <%end%>
+        </div>
+    </div>
+    </div>
+</div>

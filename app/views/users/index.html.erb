@@ -5,8 +5,8 @@
           <%= search_form_for @q do |f|%>
           <div class="search-area">
            <div >
-              <%= f.search_field :email_cont, class: "search-box" %>
-              <%= f.submit class: "search-button " %>
+              <%= f.search_field :email_cont, class: "fa fa-search search-box" %>
+              <%= f.submit class: "fa fa-search search-button " %>
             </div>
           </div>
           <% end %>
@@ -15,6 +15,7 @@
       <table class="table table-hover table-striped table-bordered">
           <thead>
             <tr>
+                <th>S.no</th> 
                 <th>Name</th> 
                 <th>Email</th> 
                 <th colspan="2">Actions</th> 
@@ -23,10 +24,11 @@
         <tbody>
           <% @users.each do |user| %>
               <tr>
+                  <td><%= user.id %></td>
                   <td><%= user.name %></td>
                   <td><%= user.email %></td>
-                  <td><%= link_to "View" , user_path(user) %></td>
-                  <td><%= link_to "Remove" , user_path(user), method: :delete, data: {confirm: "are you sure!!"} %></td>
+                  <td><%= link_to "View" , user_path(user), class: "btn btn-warning" %></td>
+                  <td><%= link_to "Remove" , user_path(user), class: "btn btn-danger", method: :delete, data: {confirm: "are you sure!!"} %></td>
               </tr>
           <% end %>
         </tbody>

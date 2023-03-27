@@ -2,22 +2,22 @@
 <div class="container">
    <div class="book-box">
         <div class="col-6">
-            <% @address.each do |x|%>
-                <div class="card p-3">
-                    <li><strong class="address-text">Name: </strong><%=x.first_name%><%=x.last_name%></li>
-                    <li><strong class="address-text">Contact: </strong><%=x.contactnumber%></li>
-                    <li><strong class="address-text">Pincode: </strong><%=x.pincode%></li>
-                    <li><strong class="address-text">City: </strong><%=x.city%></li>
-                    <li><strong class="address-text">State: </strong><%=x.state%></li>
-                    <li><strong class="address-text">Country: </strong><%=x.country%></li>
-                    <li><strong class="address-text">Locality: </strong><%=x.landmark%></li>
+                <div class="card p-2">
+                    <li><strong class="address-text">Name: </strong><%=@address.first_name%><%=@address.last_name%></li>
+                    <li><strong class="address-text">Contact: </strong><%=@address.contactnumber%></li>
+                    <li><strong class="address-text">Pincode: </strong><%=@address.pincode%></li>
+                    <li><strong class="address-text">City: </strong><%=@address.city%></li>
+                    <li><strong class="address-text">State: </strong><%=@address.state%></li>
+                    <li><strong class="address-text">Country: </strong><%=@address.country%></li>
+                    <li><strong class="address-text">Locality: </strong><%=@address.landmark%></li>
                 </div>
                  </br>
-            <% end %>
         </div>
     </div>
-    <%= link_to "add address", addressform_path, method: :get, class: "btn btn-primary"%>
-    <%# <%= link_to "payment", checkout_create_path, params: {id: order.id}, remote: true, class:"btn btn-info m-1" %>
-   
-    <%# <%= button_to "payment",checkout_create_path, params: {id: book.id}, remote: true, class: "btn btn-success m-1"%> 
+    <%# <%= link_to "add address", addressform_path, method: :get, class: "btn btn-primary"%> 
+    <div class="card-button">
+        <%= link_to "Edit address", edit_path, class: "btn btn-primary m-1"%>
+        
+        <%= button_to "Payment", checkout_create_path, params: {id: @order.id}, remote: true, class:"btn btn-info m-1" %>
+    </div>
 </div> 

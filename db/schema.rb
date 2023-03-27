@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_14_100353) do
+ActiveRecord::Schema.define(version: 2023_03_21_093521) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2023_03_14_100353) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "category_id"
     t.integer "price"
+    t.integer "sale_count", default: 0, null: false
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 
@@ -79,6 +80,8 @@ ActiveRecord::Schema.define(version: 2023_03_14_100353) do
     t.integer "total_price"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "purchase_type"
+    t.integer "time_period"
   end
 
   create_table "orders", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

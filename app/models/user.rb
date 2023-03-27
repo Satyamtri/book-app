@@ -24,15 +24,15 @@ class User < ApplicationRecord
   end
   has_many :books 
   has_many :orders
-  has_many :addresses
-  # has_one :address
+  # has_many :addresses
+  has_one :address
   has_one_attached :avatar
   
   after_commit :add_default_avatar, on: %i[create update]
   
   def avatar_thumbnail
     if avatar.attached?
-      avatar.variant(resize: "50x50!").processed
+      avatar.variant(resize: "150x150!").processed
     else
       "/default_profile.jpg"
     end 

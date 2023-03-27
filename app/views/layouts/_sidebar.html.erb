@@ -1,26 +1,28 @@
-<div class="d-flex flex-column flex-shrink-0 p-3 bg-dark" style="width: 280px; min-height: calc(100vh - 56px); ">
+<%# <div class = "sidebar"> %>
+<div class="d-flex flex-column flex-shrink-0 p-3 sidebar" style="width: 280px; min-height: calc(100vh - 56px); ">
     <%# <a href="/" class=" align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
       <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
       <span class="fs-4">Sidebar</span>
     </a> %>
     <ul class="nav nav-pills flex-column mb-auto text-center">
       <li class="nav-item mt-2">
-        <%= link_to "Home", admins_path, class: "nav-link link-dark" %>
+        <%= link_to " HOME", admins_path, class: "fa fa-home nav-link link-dark" %>
       </li>
       </br>
       <li class="nav-item">
         <% if current_user.try(:admin) %>
-          <%= link_to "Users", users_path, class: "nav-link link-dark" %>
+          <%= link_to " USERS", users_path, class: "fa fa-user nav-link link-dark" %>
           </br>
-          <%= link_to "Add Book", new_book_path, class: "nav-link link-dark" %>
+          <%= link_to " ADD BOOK", new_book_path, class: "fa fa-plus nav-link link-dark" %>
         <% end %>
       </li>
       <li class="nav-item">
       </li>
       </br>
       <li class="nav-item">
-        <%= link_to "Books", books_path, class: "nav-link link-dark" %>
+        <%= link_to " BOOKS", books_path, class: "fa fa-book nav-link link-dark" %>
       </li>
     </ul>
     <hr>
   </div>
+  <%# </div> %>

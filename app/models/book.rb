@@ -13,6 +13,4 @@ class Book < ApplicationRecord
       "/default_profile.jpg"
     end 
   end
-
-  
 end

@@ -8,24 +8,35 @@ Rails.application.routes.draw do
   resources :categories
   resources :lineitems
   resources :orders
+  resources :webhooks, only: [:create]
   
-  post 'checkout/create', to: "checkout#create"
-
-  post '/addtocart', to: "orders#add_to_cart"
-  get '/cart', to: "orders#cart"
-
-  post 'addaddress', to: "orders#add_address"
-  get '/addressform', to: "orders#address_form"
-  get '/address', to: "orders#address"
-
-  get '/payment', to: "orders#payment"
- 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     omniauth_callbacks: "users/omniauth_callbacks"
   }
-
   resources :users
+
+  get '/checkout/success', to: "checkout#success"
+  get '/checkout/cancel', to: "checkout#cancel"
+  post 'checkout/create', to: "checkout#create"
+  post 'checkout/create_book', to: "checkout#create_book"
+
+
+  post '/addtocart', to: "orders#add_to_cart"
+  get '/cart', to: "orders#cart"
+  
+
+  post 'addaddress', to: "orders#add_address"
+  get '/addressform', to: "orders#address_form"
+  get '/address', to: "orders#address"
+  get '/edit', to: "orders#edit"
+  post '/update', to: "orders#update_address"
+
+  get '/payment', to: "orders#payment"
+  
+  post '/addtorent', to: "orders#add_to_rent"
+  get 'rent', to: "orders#rent"
+
   get 'otp_form', to: 'pages#otp_form'
   post 'generate_otp', to: 'pages#generate_otp'
   get 'otp_verify', to: 'pages#otp_verify'

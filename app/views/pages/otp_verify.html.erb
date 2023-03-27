@@ -3,14 +3,16 @@
     <div class="col-6">
       <div class="signin-form">
         <div class="form shadow rounded">
+         <div class="otp-form">
           <%= form_with(url: otp_verification_path, method: :post) do |form| %>
-          <div class="field mt-3">
+          <div >
             <%= form.label :OTP %></br>
             <%= form.text_field :OTP, class:"form-control shadow rounded" %>
           </div>
           </br>
-            <%= form.submit "submit otp" %>
+            <%= form.submit "Submit otp", class:"btn btn-success" %>
           <% end %>
+          </div>
         </div>
       </div>
     </div>

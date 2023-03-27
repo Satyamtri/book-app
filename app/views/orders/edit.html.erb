@@ -1,0 +1,51 @@
+<div class="container" >
+    <div class="col-5">
+        <div class="address-form">
+            <div class="form shadow rounded">
+                <div class="otp-form">
+                    <%= form_with scope: :address, url: update_path(@address), method: :post do |form| %>
+                    <div class="field mt-2">
+                        <%= form.label :FirstName %></br>
+                        <%= form.text_field :first_name, class:"form-control shadow rounded" %>
+                    </div>
+                    <div class="field mt-2">
+                        <%= form.label :LastName %></br>
+                        <%= form.text_field :last_name , class:"form-control shadow rounded"%>
+                    </div>
+                    <div class="field mt-2">
+                        <%= form.label :Contact %></br>
+                        <%= form.text_field :contactnumber, class:"form-control shadow rounded" %>
+                    </div>
+                    <div class="field mt-2">
+                        <%= form.label :Pincode %></br>
+                        <%= form.text_field :pincode, class:"form-control shadow rounded" %>
+                    </div>
+                    <div class="field mt-2">
+                        <%= form.label :City %></br>
+                        <%= form.text_field :city, class:"form-control shadow rounded" %>
+                    </div>
+                    <div class="field mt-2">
+                        <%= form.label :State %></br>
+                        <%= form.text_field :state, class:"form-control shadow rounded" %>
+                    </div>
+                    <div class="field mt-2">
+                        <%= form.label :Country %></br>
+                        <%= form.text_field :country, class:"form-control shadow rounded" %>
+                    </div>
+                    <div class="field mt-2">
+                        <%= form.label :landmark %></br>
+                        <%= form.text_field :landmark, class:"form-control shadow rounded" %>
+                    </div>
+                    <div class="field mt-2">
+                        <%= form.hidden_field :user_id, value: current_user.id  %>
+                    </div>
+                    <div class="field mt-2">
+                        <%= form.submit  %>
+                    </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%# </div> %>
+</div>

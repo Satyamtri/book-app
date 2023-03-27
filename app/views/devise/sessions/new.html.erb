@@ -36,15 +36,14 @@
             <hr>
 
             <div class="field mt-3 text-center">
-          
               <h5 >or</h5>
-              <%= link_to "Login with Contact no.", otp_form_path %>
+              <%= link_to "Login with Contact no.", otp_form_path, class:"btn btn-outline-primary" %>
             </div>
 
-            <hr>
           <% end %>
-
+            <hr>
           <%= render "devise/shared/links" %>
+
         </div>
     </div>
   </div>

@@ -1,7 +1,16 @@
-<h1>showing user details</h1>
-
-<p><strong>Name: </strong><%= @user.name %></p>
-<p><strong>Email: </strong><%= @user.email %></p>
-<p><strong>Mobile no.: </strong><%= @user.contactnumber %></p>
-<td><%= link_to 'Show Books', books_path(@book) %></td>
-
+<div class="container">
+    <div class="book-box">
+        <div class=" row">
+            <div class="col-3">
+            <p class="user"><%= image_tag @user.avatar_thumbnail%></p>
+            </div>
+            <div class="col-3">
+                <p><strong>Name: </strong><%= @user.name %></p>
+                <p><strong>Email: </strong><%= @user.email %></p>
+                <p><strong>Mobile no.: </strong><%= @user.contactnumber %></p>
+                <td><%= link_to 'Show Books', books_path(@book), class: "btn btn-dark" %></td>
+            
+            </div>
+        </div>
+    </div>
+</div>

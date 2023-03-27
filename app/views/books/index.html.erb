@@ -10,15 +10,41 @@
                <div class="card-body book-body">
                   <h3 class="card-title"><%=link_to book.bname, book_path(book) %></h3>
                   <p class="card-des"><%= truncate(book.description,length: 100)%></p>
-                  <p class="card-des">Price: <%= book.price%></p>
+                  <p class="card-des">Price: <%= book.price%> Rs </p>
                   <div class="card-button">
-                     <%= button_to "Buy", checkout_create_path, params: {id: book.id}, remote: true, class: "btn btn-success m-1" %>
-                     <%# <%= link_to "buy", addressform_path, class: "btn btn-success m-1" %>
-                     <%= button_to "Rent", lineitems_path, class: "btn btn-success m-1"%>
-                     <%= button_to "Add to cart", addtocart_path(book), class: "btn btn-success m-1" %>
+                        <%# <%= button_to "Buy", checkout_create_book_path, params: {id: book.id}, remote: true, class: "btn btn-success m-1" %> 
+                        <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#exampleModal<%=book.id%>">Rent</button>
+                        <%= button_to "Add to cart", addtocart_path(book), class: "btn btn-success m-1" %>
                   </div>
                </div>   
+        
+         <div class="card-button">
+            <div class="modal fade" id="exampleModal<%=book.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+               <div class="modal-dialog">
+                  <div class="modal-content">
+                     <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Select the Week</h5>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                        <%= form_with(url: addtorent_path(book), method: :post) do |form| %>
+                           <div class="field mt-3">
+                              <%= form.label  "how many weeks" %>
+                              <%= form.select :time_period, options_for_select(%i[1 2 3 4 5 6 7 8 9 10]) %>
+                           </div>
+                        </br>
+                        
+                     </div>
+                     <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <%= form.submit  "Add to rent" , class: "btn btn-success m-1" %>
+                        <% end %>
+                     </div>
+                  </div>
+               </div>
+            </div>
          </div>
+          </div>
       </div>
       <% end %>
    </div>
