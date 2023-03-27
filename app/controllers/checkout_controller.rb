@@ -2,7 +2,6 @@ class CheckoutController < ApplicationController
 
     def create
         @order = Order.find(params[:id])
-        # session[:current_order_id]=@order
         @line_items = @order.lineitems 
         @order.update(state: 3)
         books_name =[]
