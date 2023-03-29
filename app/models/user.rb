@@ -5,6 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable,:omniauthable, omniauth_providers: [:google_oauth2]
   
+  # validates :contactnumber, phone: true
   
   def self.from_omniauth(access_token)
     user = User.where(email: access_token.info.email).first
@@ -53,7 +54,7 @@ class User < ApplicationRecord
       )
     end 
   end
-  # validates :contactnumber, phone: true
+ 
   
   # scope :admin?, -> { where(admin: true) }
   # def username

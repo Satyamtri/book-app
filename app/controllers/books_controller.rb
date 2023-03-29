@@ -6,6 +6,15 @@ class BooksController < ApplicationController
   # GET /books or /books.json
   def index
     @books = Book.all.order("created_at DESC")
+
+    if params[:searchp] || params[:searchpx]
+      @search_pricen_term = params[:searchp]
+      @search_pricex_term = params[:searchpx]
+      @books = Book.between_range(@search_pricen_term, @search_pricex_term)
+    end
+    if params[:book_language].present?
+      @books = @books.where(book_language: params[:book_language])
+    end 
   end
 
   # GET /books/1 or /books/1.json
@@ -70,7 +79,7 @@ class BooksController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
-    def book_params
-      params.require(:book).permit(:bname, :description, :category_id, :avatar, :price)
+    def book_params  
+      params.require(:book).permit(:bname, :description, :category_id, :avatar, :price, :book_language)
     end
 end

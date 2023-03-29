@@ -13,4 +13,11 @@ class Book < ApplicationRecord
       "/default_profile.jpg"
     end 
   end
+
+  def self.between_range(search_pricen_term,search_pricex_term)
+    scope :between_range, ->(min,max){
+      where("price >= ? AND price <= ?", min,max)
+    }
+  end
+
 end

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
-    <%=link_to "BookStore", books_path, class: "navbar-brand", id: "logo" %>
+    <%=link_to "BookABook", books_path, class: "navbar-brand", id: "logo" %>
    <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
@@ -18,15 +18,15 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                   Categories
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <% all_categories.each do |category |%>
-                    <li><%= link_to category.title, category_path(category), class: "dropdown-item"%></li>
-                  <%end %>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% all_categories.each do |category |%>
+                  <li><%= link_to category.title, category_path(category), class: "dropdown-item"%></li>
+                <%end %>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Something else here</a></li>
+              </ul>
+            </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     Setting
@@ -40,7 +40,7 @@
               </li>
 
             <li><%= link_to '', cart_path,  class:"fa fa-shopping-cart nav-item nav-link  m-auto cart-icon" %></li>
-            <li class="text-light"><%= current_user.orders.last.lineitems.count%></li>
+            <%# <li class="text-light"><%= current_user.orders.last.lineitems.count%>
 
             <% else %>
             

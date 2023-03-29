@@ -96,6 +96,15 @@ body{
     display: block;
     border-radius: 100px;
 }
+.img1-circular{
+    width: 120px;
+    height: 120px;
+    background-size: cover;
+    display: block;
+    border-radius: 100px;
+   
+}
+
 .address-text{
     margin-right: 15px;
 }
@@ -103,7 +112,7 @@ body{
     font-size: 24px;
 }
 .sidebar{
-    background-color: #937e9e;
+    background-color: rgba(45, 27, 161, 0.5);
 }
 .otp-form{
     padding: 20px;

@@ -46,11 +46,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-     transition: 1s;
+    transition: 1s;
 }
 .card-title{
     text-transform: uppercase;
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 500;
     color: #fff;
 }
@@ -89,3 +89,42 @@
     padding: 10px 0;
 }
 
+// .price-search{
+//     margin-top: 5px;
+// }
+
+.book-filter-box {
+   
+    .price-box {
+        // display: flex;
+        // justify-content: space-around;
+        .price-select {
+            label {
+                // display: block;
+
+            }
+            select {
+                border: none;
+                outline: none;
+                width: 60px;
+                height: 25px;
+                padding: 4px;
+                border-radius: 8px;
+
+            }
+        }
+    }
+    .language-box{
+        label{
+            color: white;
+        }
+        select{
+            border: none;
+            outline: none;
+            width: 90px;
+            height: 25px;
+            padding: 4px;
+            border-radius: 8px;
+        }
+    }
+}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_21_093521) do
+ActiveRecord::Schema.define(version: 2023_03_28_060932) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2023_03_21_093521) do
     t.integer "category_id"
     t.integer "price"
     t.integer "sale_count", default: 0, null: false
+    t.string "book_language"
     t.index ["user_id"], name: "index_books_on_user_id"
   end
 

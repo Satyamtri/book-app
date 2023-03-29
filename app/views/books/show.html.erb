@@ -15,9 +15,17 @@
                <strong><p class="mt-4">Price: <%= @book.price%> rs</p></strong>
                <strong><p>Category: <%= @book.category.title%></p></strong>
                <div class="book-price">   
-                  <%= link_to 'Add to cart', addtocart_path(@book), method: :post, class:"btn btn-success m-1" %>
+                  <%# <%= link_to 'Add to cart', addtocart_path(@book), method: :post, class:"btn btn-success m-1" %> 
                </div>
+               <%= form_with(url: addtocart_path(@book), method: :post) do |form| %>
+                  <div class="field mt-3">
+                     <%= form.label  "Quantity" %>
+                     <%= form.select :quantity, options_for_select(%i[1 2 3 4 5 6 7 8 9 10]) %>
+                     <%= form.submit  "Add to cart", class: "btn btn-success m-1" %>
+                  </div>
+               <%end%>
             <% end %>
+              
          </div>
       </div>
    </div>

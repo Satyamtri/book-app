@@ -25,9 +25,8 @@ class OrdersController < ApplicationController
             @order = current_user.orders.create
         end 
         book = Book.find(params[:format])
-        book_price = book.price
-        @order.lineitems.create(book_id: params[:format], price: book_price, purchase_type: "buy")
-
+        book_price = book.price * params[:quantity].to_i
+        @order.lineitems.create(book_id: params[:format], price: book_price, purchase_type: "buy", quantity: params[:quantity])
         redirect_to cart_path
     end 
 

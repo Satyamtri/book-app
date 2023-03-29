@@ -4,25 +4,47 @@
       <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
       <span class="fs-4">Sidebar</span>
     </a> %>
-    <ul class="nav nav-pills flex-column mb-auto text-center">
-      <li class="nav-item mt-2">
-        <%= link_to " HOME", admins_path, class: "fa fa-home nav-link link-dark" %>
-      </li>
-      </br>
-      <li class="nav-item">
-        <% if current_user.try(:admin) %>
+   <%# <p class="side-image"><%= image_tag(current_user.avatar_thumbnail,  :class=> "img1-circular ") %>
+
+    <% if current_user.try(:admin) %>
+      <ul class="nav nav-pills flex-column mb-auto text-center">
+        <li class="nav-item mt-2">
+          <%= link_to " HOME", admins_path, class: "fa fa-home nav-link link-dark" %>
+        </br>
           <%= link_to " USERS", users_path, class: "fa fa-user nav-link link-dark" %>
-          </br>
+        </br>
           <%= link_to " ADD BOOK", new_book_path, class: "fa fa-plus nav-link link-dark" %>
-        <% end %>
-      </li>
-      <li class="nav-item">
-      </li>
-      </br>
-      <li class="nav-item">
-        <%= link_to " BOOKS", books_path, class: "fa fa-book nav-link link-dark" %>
-      </li>
-    </ul>
-    <hr>
+        </br>
+          <%= link_to " BOOKS", books_path, class: "fa fa-book nav-link link-dark" %>
+        </li>
+      <ul>
+      <% else %>
+      <ul class="nav nav-pills flex-column mb-auto text-center book-filter-box">
+        <li class="nav-item nav-link mt-2">PRICE</li>
+          <%# <%= form_for "", url: books_path, role: "search", method: :get do %>
+          <%= form_with(url: books_path, method: :get) do |form| %>
+            <div class="price-box">
+              <div class="price-select">
+                 <%# <label for="min-value">Min</label>  %>
+                <%= form.select :searchp, options_for_select(%i[0 100 200 300 400 500 600 700])%>
+              </div>
+              </br>
+              <div class="price-select">
+                <!-- <label for="max-value">Max</label> -->
+                <%= form.select :searchpx, options_for_select(%i[ 0 100 200 300 400 500 600 700])%>
+              </div>
+            </div>
+            </br>
+            <div class="language-box">
+              <label for="language">LANGUAGE</label> </br>
+              <%= form.select :book_language, options_for_select(['English', 'Hindi']), {}%>
+            </div>
+            </br>
+            <%= submit_tag "GO", class:"btn btn-outline-dark "%>
+          <% end %>
+        <hr>
+        </li>
+      </ul>
+    <% end %>
+  <%# <hr> %>
   </div>
-  <%# </div> %>

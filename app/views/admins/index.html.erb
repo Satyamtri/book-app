@@ -25,8 +25,8 @@
       <div class="col-md-4">
         <div class="card text-center"style="width: 18rem;">
           <div class="card-body">
-            <h6 class="card-title text-dark"> Purchases</h6>
-            <strong><p class="card-text"><%= pluralize(User.count ,"User")%></p></strong>
+            <h6 class="card-title text-dark"> Total Order</h6>
+            <strong><p class="card-text"><%= pluralize(Order.count ,"Orders")%></p></strong>
             <a><%= link_to 'See Users', users_path, class:"btn btn-primary"%> </a>
           </div>
         </div>
