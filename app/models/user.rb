@@ -5,7 +5,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
   :recoverable, :rememberable, :validatable,:omniauthable, omniauth_providers: [:google_oauth2]
   
-  # validates :contactnumber, phone: true
+  validates :contactnumber, length: { minimum: 10}
+  validates :name, presence: true
+  validates :email, confirmation: true
+  validates :password, length: { in: 6..20 }
   
   def self.from_omniauth(access_token)
     user = User.where(email: access_token.info.email).first

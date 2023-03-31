@@ -2,36 +2,47 @@
    <div class="book-box">
       <div class="row ">
          <div class="col-8">
+         <% if @order.lineitems.present? %>
             <% @order.lineitems.each do |x|%>
-               <div class="row mt-4">
+               <div class="row mb-4">
                   <div class="col-4" >
                      <%= image_tag x.book.avatar_thumbnail %>
                   </div>
                   <div class="col-8" >
-                     <%= x.book.bname%>
-                     <p class="mb-2">Purchase Type: <%= x.purchase_type%></p>  
-                     <p>Category: <%= x.book.category.title%></p>
-                     <% if x.purchase_type=="rent"%>
-                        <div class="book-price">   
-                           <p>Rent Price: <span><%= x.price%></span> Rs</p>
-                        </div>
-                        <%else%>
-                        <p class="mt-2">Book Price: <%= x.price%> Rs</p>
+                     <strong><%= x.book.bname%></strong>
+                     <p class="m-0"><strong>Purchase Type: </strong> <%= x.purchase_type%></p>  
+                     <p class="m-0"><strong>Category: </strong> <%= x.book.category.title%></p>
+                     <% if x.purchase_type=="rent"%>   
+                           <strong>Book Price: </strong> <span><%= x.price%></br>
+                           <strong>Weeks: </strong> <span><%= x.time_period%></br>
+                           <strong>Rent price / week: </strong> 20% </br>
+                           <strong>Total Price: </strong> <span><%= x.total_price%>
+                     <%else%>
+                        <strong >Book Price: </strong> <%= x.price%> Rs </br>
+                        <strong>Quantity: </strong> <%= x.quantity%> </br>
+                        <strong>Total Price: </strong> <%= x.total_price%>
                      <%end%>
-
-                     <%= link_to "Remove" , lineitem_path(x), class: "btn btn-success", method: :delete, data: {confirm: "are you sure!!"} %>
+                     </br>
+                     <%= link_to "Back" , books_path, class: "btn btn-success mt-2"%> ||
+                     <%= link_to "Remove" , lineitem_path(x), class: "btn btn-success mt-2", method: :delete, data: {confirm: "are you sure!!"} %>
                   </div>
                </div>
             <%end%>
+         <%else%>
+            <h1>!! Your Shopping Cart is Empty</h1>
+            <%= link_to "Continue Shopping", books_path, class: "btn btn-success"%>
+         <%end%>
          </div>
          <div class="col-4">
-         <strong><p>Total books :<%= @order.lineitems.count %></p></strong>      
-          <strong><p>Total price :<%= all_lineitems.pluck(:price).compact.sum %></p><strong>
-          <% if current_user.address.present? %>
-            <%= link_to "Proceed", address_path, class:"btn btn-danger" %>
-         <%else%>
-            <%= link_to "add address", addressform_path, method: :get, class: "btn btn-primary" %>
-         <%end%>
+            <strong><p>Total books :<%= all_quantity.pluck(:quantity).sum { |x| x.nil? ? 1 : x } %></p></strong> 
+            <strong><p>Total price :<%=   all_lineitems.pluck(:total_price).sum %></p><strong>
+            <% if current_user.address.present? %>
+               <%= link_to "Proceed", address_path, class:"btn btn-danger" %>
+            <%else%>
+               <%= link_to "add address", addressform_path, method: :get, class: "btn btn-primary" %>
+            <%end%>
+            
+            
            <%# <%= button_to "Payment", checkout_create_path, params: {id: @order.id}, remote: true, class:"btn btn-info m-1" %> 
            
          </div>

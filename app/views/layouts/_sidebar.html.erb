@@ -19,32 +19,32 @@
         </li>
       <ul>
       <% else %>
-      <ul class="nav nav-pills flex-column mb-auto text-center book-filter-box">
-        <li class="nav-item nav-link mt-2">PRICE</li>
-          <%# <%= form_for "", url: books_path, role: "search", method: :get do %>
-          <%= form_with(url: books_path, method: :get) do |form| %>
-            <div class="price-box">
-              <div class="price-select">
-                 <%# <label for="min-value">Min</label>  %>
-                <%= form.select :searchp, options_for_select(%i[0 100 200 300 400 500 600 700])%>
-              </div>
-              </br>
-              <div class="price-select">
-                <!-- <label for="max-value">Max</label> -->
-                <%= form.select :searchpx, options_for_select(%i[ 0 100 200 300 400 500 600 700])%>
-              </div>
+      <ul class="nav nav-pills flex-column mb-auto text-center">
+      <div class="filter-box">
+        <div class="filter-area">
+         <li class="price-title">PRICE</li>
+         <%= form_for "", url: books_path, role: "search", method: :get do %>
+            <div class="price-body">
+               <p class="price-field"><%= text_field_tag :searchp, @search_pricen_term, placeholder: "Min.." , class: " form-control shadow rounded "%></p>
+               <p class="price-field"><%= text_field_tag :searchpx, @search_pricex_term, placeholder: "Max..", class: " form-control shadow rounded "%></p>
             </div>
             </br>
-            <div class="language-box">
-              <label for="language">LANGUAGE</label> </br>
-              <%= form.select :book_language, options_for_select(['English', 'Hindi']), {}%>
+            <%# <li class="language-title">LANGUAGE</li> %>
+            <%# <p class="price-field"><%= text_field_tag :book_language, @book_language, placeholder: "lang..", class: " form-control shadow rounded "%>
+            <div class="check-box-align">
+              <div>
+                <input class="form-check-input" type="radio" name="book_language" value="English" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">English</label>
+              </div>
+              <div>
+                <input class="form-check-input" type="radio" name="book_language" value="Hindi" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">Hindi</label>
+              </div>
             </div>
-            </br>
             <%= submit_tag "GO", class:"btn btn-outline-dark "%>
           <% end %>
-        <hr>
-        </li>
+        </div>
+      </div>
       </ul>
     <% end %>
-  <%# <hr> %>
   </div>

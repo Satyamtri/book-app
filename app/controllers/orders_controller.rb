@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
     
     def index
-       
+       @orders = Order.all
+       @orders = Order.paginate(page: params[:page], per_page: 10)
     end
     
     def show
@@ -15,7 +16,7 @@ class OrdersController < ApplicationController
     def destroy
         @order = Order.find(params[:id])
         @order.destroy
-        redirect_to books_path
+        redirect_to orders_path
     end
 
     def add_to_cart
@@ -25,8 +26,9 @@ class OrdersController < ApplicationController
             @order = current_user.orders.create
         end 
         book = Book.find(params[:format])
-        book_price = book.price * params[:quantity].to_i
-        @order.lineitems.create(book_id: params[:format], price: book_price, purchase_type: "buy", quantity: params[:quantity])
+        book_price = book.price 
+        total_price =  book.price * params[:quantity].to_i
+        @order.lineitems.create(book_id: params[:format], price: book_price, purchase_type: "buy", quantity: params[:quantity], total_price: total_price)
         redirect_to cart_path
     end 
 
@@ -60,6 +62,7 @@ class OrdersController < ApplicationController
     def edit
        @user = current_user
         @address = @user.address
+        @address.save
     end
 
     def update_address
@@ -80,10 +83,11 @@ class OrdersController < ApplicationController
             @order = current_user.orders.create
         end 
         book = Book.find(params[:format])
-        book_price_per_day = book.price * 0.07
-        # book_price = book.price   
-        calc_rent = params[:time_period].to_i * book_price_per_day.to_i
-        @order.lineitems.create(book_id: params[:format], price: calc_rent , purchase_type: "rent", time_period: params[:time_period])
+        book_price = book.price   
+        # book_price_per_day = book.price * 0.2 * params[:time_period].to_i
+        book_price_per_day = params[:time_period].to_i * (book_price * 0.2)
+        total_price = book_price + book_price_per_day
+        @order.lineitems.create(book_id: params[:format], price: book_price , purchase_type: "rent", time_period: params[:time_period], total_price: total_price)
         redirect_to cart_path
     end
 

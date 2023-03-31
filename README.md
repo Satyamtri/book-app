@@ -193,3 +193,19 @@ Things you may want to cover:
   </div>
 
 </div>
+
+ <li class="nav-item nav-link mt-2">PRICE</li>
+          <%= form_for "", url: books_path, role: "search", method: :get do %>
+            <p><%= text_field_tag :searchp, @search_pricen_term, placeholder: "Min.." , class: " shadow rounded w-50"%></p>
+            <p><%= text_field_tag :searchpx, @search_pricex_term, placeholder: "Max..", class: " shadow rounded w-50"%></p>
+            <%= submit_tag "GO", class:"btn btn-outline-dark "%>
+          <% end %>
+          </li>
+        <hr>
+        <li class="nav-item nav-link ">LANGUAGES</li>
+          <%= form_with(url: books_path, method: :get) do |form| %>
+            <%= form.select :book_language, options_for_select(['English', 'Hindi']) , class: " form shadow rounded " %>
+            </br>
+            <%= form.submit "GO",  class:"btn btn-outline-dark mt-2 " %>
+        <%end%>
+        </li>

@@ -30,7 +30,7 @@ class LineitemsController < ApplicationController
   private
     
     def lineitem_params
-        params.require(:lineitem).permit(:book_id, :order_id, :price, :quantity, :total_price, :purchase_type, :time_period, :quantity)
+        params.require(:lineitem).permit(:book_id, :order_id, :price, :quantity, :total_price, :purchase_type, :time_period, :quantity, :total_price)
     end
   
 end

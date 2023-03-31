@@ -6,7 +6,7 @@
           <div class="search-area">
            <div >
               <%= f.search_field :email_cont, placeholder: " Search...", class: " search-box" %>
-              <%= f.submit class: "fa fa-search search-button " %>
+              <%= f.submit class: "fa fa-search search-button ", id:"searchUser" %>
             </div>
           </div>
           <% end %>
@@ -38,3 +38,11 @@
     </div>
   </div>
 </div>
+<script>
+$('#q_email_cont').on('keydown', function(){
+    setTimeout(function(){
+		console.log('true');
+		$('#searchUser').click();
+	}, 1000); 
+});
+</script>

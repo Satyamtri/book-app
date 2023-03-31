@@ -1,8 +1,9 @@
 
 <div class="container">
    <div class="book-box">
-        <div class="col-6">
-                <div class="card p-2">
+        <div class="col-6 p-0">
+            <div class="card">
+                <div class="address-content">
                     <li><strong class="address-text">Name: </strong><%=@address.first_name%><%=@address.last_name%></li>
                     <li><strong class="address-text">Contact: </strong><%=@address.contactnumber%></li>
                     <li><strong class="address-text">Pincode: </strong><%=@address.pincode%></li>
@@ -11,10 +12,11 @@
                     <li><strong class="address-text">Country: </strong><%=@address.country%></li>
                     <li><strong class="address-text">Locality: </strong><%=@address.landmark%></li>
                 </div>
-                 </br>
+            </div>   
         </div>
     </div>
     <%# <%= link_to "add address", addressform_path, method: :get, class: "btn btn-primary"%> 
+    </br>
     <div class="card-button">
         <%= link_to "Edit address", edit_path, class: "btn btn-primary m-1"%>
         

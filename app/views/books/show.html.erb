@@ -14,9 +14,9 @@
                <%= link_to 'Back', books_path, class: "btn btn-success" %></br>
                <strong><p class="mt-4">Price: <%= @book.price%> rs</p></strong>
                <strong><p>Category: <%= @book.category.title%></p></strong>
-               <div class="book-price">   
+               <%# <div class="book-price">    %>
                   <%# <%= link_to 'Add to cart', addtocart_path(@book), method: :post, class:"btn btn-success m-1" %> 
-               </div>
+               <%# </div> %>
                <%= form_with(url: addtocart_path(@book), method: :post) do |form| %>
                   <div class="field mt-3">
                      <%= form.label  "Quantity" %>
