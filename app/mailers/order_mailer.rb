@@ -5,16 +5,16 @@ class OrderMailer < ApplicationMailer
   #
   #   en.order_mailer.order_created.subject
   #
-  def order_created(user)
-    
+  def order_created(user,total_amount,order)
+    @order = order
     @user = user
     email = user.email
+    @total_amount = total_amount
     @greeting = "Hi"
     attachments['bookmail.png'] = File.read('app/assets/images/bookmail.png')
     mail(
       from: User.first.email,
       to: email, 
-      # cc: User.all.pluck(:email), 
       bcc: "secrete@bookapp.com", 
       subject: "New order created"
     )

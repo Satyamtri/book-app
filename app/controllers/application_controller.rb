@@ -24,12 +24,7 @@ class ApplicationController < ActionController::Base
         redirect_to books_path
       end
     end
-
-    def initialize_session
-      session[:cart] = []
-
-    end
-
+    
     protected
     
     def configure_permitted_parameters

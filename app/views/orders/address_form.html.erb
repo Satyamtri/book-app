@@ -6,41 +6,41 @@
                 <%= form_with scope: :address, url: addaddress_path, method: :post do |form| %>
                 <div class="form-group">
                     <%= form.label :FirstName %></br>
-                    <%= form.text_field :first_name %>
+                    <%= form.text_field :first_name,  class:"form-control shadow rounded" %>
                 </div>
                 <div class="form-group">
                     <%= form.label :LastName %></br>
-                    <%= form.text_field :last_name %>
+                    <%= form.text_field :last_name, class:"form-control shadow rounded"%>
                 </div>
                 <div class="form-group">
                     <%= form.label :Contact %></br>
-                    <%= form.text_field :contactnumber %>
+                    <%= form.text_field :contactnumber, class:"form-control shadow rounded" %>
                 </div>
                 <div class="form-group">
                     <%= form.label :Pincode %></br>
-                    <%= form.text_field :pincode %>
+                    <%= form.text_field :pincode, class:"form-control shadow rounded"%>
                 </div>
                 <div class="form-group">
                     <%= form.label :City %></br>
-                    <%= form.text_field :city %>
+                    <%= form.text_field :city, class:"form-control shadow rounded" %>
                 </div>
                 <div class="form-group">
                     <%= form.label :State %></br>
-                    <%= form.text_field :state %>
+                    <%= form.text_field :state, class:"form-control shadow rounded" %>
                 </div>
                 <div class="form-group">
                     <%= form.label :Country %></br>
-                    <%= form.text_field :country %>
+                    <%= form.text_field :country, class:"form-control shadow rounded" %>
                 </div>
                 <div class="form-group">
                     <%= form.label :landmark %></br>
-                    <%= form.text_field :landmark %>
+                    <%= form.text_field :landmark, class:"form-control shadow rounded" %>
                 </div>
                 <div class="form-group">
                     <%= form.hidden_field :user_id, value: current_user.id  %>
                 </div>
                 <div class="form-group">
-                    <%= form.submit  %>
+                    <%= form.submit class:"btn btn-success" %>
                 </div>
                 <% end %>
                 </div>

@@ -1,9 +1,27 @@
-<div class="container">
+
+<div class="container p-0">
     <div class="book-box">
-        <h2>Hurray, Payment is done!</h2>
-        <p>Order list are: </p>
-            <%@x.each do |pa|%>
-            <li>Book Name: <%=pa%></li>
-            <%end%>
+        <h2>Congrats, Payment is done!</h2><hr>
+        <h5>Order List are: </h5>
+        <% @order.lineitems.each do |x|%>
+            <div class="row mb-3">
+                <div class="col-3" >
+                    <%= image_tag x.book.avatar_thumbnail %>
+                </div>
+                <div class="col-6" >
+                    <strong><%= x.book.bname%></strong>
+                    <p class="m-0"><strong>Purchase Type: </strong> <%= x.purchase_type%></p>  
+                    <p class="m-0"><strong>Category: </strong> <%= x.book.category.title%></p>
+                    <% if x.purchase_type=="rent"%>   
+                        <strong>Weeks: </strong> <span><%= x.time_period%></br>
+                        <strong>Price Paid: </strong> <span><%= x.total_price%>
+                    <%else%>
+                        <strong>Quantity: </strong> <%= x.quantity%> </br>
+                        <strong>Price Paid: </strong> <%= x.total_price%>
+                    <%end%>
+                    </br>
+                </div>
+            </div>
+        <% end %>
     </div>
 </div>

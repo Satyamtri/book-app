@@ -52,27 +52,16 @@ class OrdersController < ApplicationController
     end
 
     def address
-       
         @user = current_user
-        @address = @user.address
-        @order = @user.orders.last
-        # @order.update(state: 1)
+        @addresses = @user.addresses
+        @order = @user.orders.last  
     end
 
-    def edit
-       @user = current_user
-        @address = @user.address
-        @address.save
-    end
-
-    def update_address
-       
-        @address = Address.find(params[:format].to_i)
-        if @address.update(params.require(:address).permit(:first_name, :last_name, :contactnumber, :pincode, :city, :state, :country, :landmark, :user_id))
-            redirect_to @address
-        else
-            render 'edit'
-        end
+    def delete_address
+        @address=Address.find(params[:address].to_i)
+        @address.destroy
+        flash[:notice]="Address is deleted"
+        redirect_to address_path
     end
 
     def add_to_rent

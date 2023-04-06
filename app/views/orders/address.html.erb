@@ -1,25 +1,37 @@
-
+<% @order.update(state: 1)%>
 <div class="container">
    <div class="book-box">
+   <h3>YOUR ADDRESSES :-</h3>
+   <hr>
         <div class="col-6 p-0">
-            <div class="card">
-                <div class="address-content">
-                    <li><strong class="address-text">Name: </strong><%=@address.first_name%><%=@address.last_name%></li>
-                    <li><strong class="address-text">Contact: </strong><%=@address.contactnumber%></li>
-                    <li><strong class="address-text">Pincode: </strong><%=@address.pincode%></li>
-                    <li><strong class="address-text">City: </strong><%=@address.city%></li>
-                    <li><strong class="address-text">State: </strong><%=@address.state%></li>
-                    <li><strong class="address-text">Country: </strong><%=@address.country%></li>
-                    <li><strong class="address-text">Locality: </strong><%=@address.landmark%></li>
+        <%= form_for "", url: checkout_create_path, remote: true,  method: :post do %>
+            <% @addresses.each do |add| %>
+                <div class="card address-check">
+                    <div class="address-content">
+                        <input class="form-check-input" type="radio" name="address" value="<%= add.id%>" id="flexRadioDefault1">
+                        <span><b><%=add.first_name%></b></span>
+                        <span><b><%=add.last_name %>,</b></span>
+                        <span><%=add.landmark%>,</span>
+                        <span><%=add.city%>,</span>
+                        <span><%=add.state.upcase%>,</span>
+                        <span><%=add.pincode%>,</span>
+                        <span><%=add.country.upcase%>,</span>
+                        <span>Phone number: <%=add.contactnumber%>,</span>
+                        <div>
+                        <%# <%= link_to "", edit_path(add), method: :get, class: "fa fa-edit address-edit"%> 
+                        <%= link_to "" , delete_address_path(address: add), class: "fa fa-trash address-delete ", method: :post, data: {confirm: "are you sure!!"} %>
+                        </div>
+                    </div>
                 </div>
-            </div>   
-        </div>
-    </div>
-    <%# <%= link_to "add address", addressform_path, method: :get, class: "btn btn-primary"%> 
-    </br>
-    <div class="card-button">
-        <%= link_to "Edit address", edit_path, class: "btn btn-primary m-1"%>
-        
-        <%= button_to "Payment", checkout_create_path, params: {id: @order.id}, remote: true, class:"btn btn-info m-1" %>
+                </br>
+            <%end %>
+
+            <div class="card-button">
+                <%= hidden_field_tag :id , @order.id %>
+                <p><%= link_to "Add address", addressform_path, method: :get, class: "btn btn-primary" %></p>
+                <p><%= submit_tag "Payment", class:"btn btn-dark ml-2 "%></p>
+            </div>
+        <%end%>
     </div>
 </div> 
+       

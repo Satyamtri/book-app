@@ -13,4 +13,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-
+$(document).on("turbolinks:load",function(){
+    $('#myAlerts').delay(3e3).fadeOut('slow')
+})

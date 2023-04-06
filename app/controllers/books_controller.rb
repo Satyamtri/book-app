@@ -11,15 +11,6 @@ class BooksController < ApplicationController
                           book_language_eq: params[:book_language]) 
     @books = @books.result
    
-    # if params[:searchp] || params[:searchpx]
-    #   @search_pricen_term = params[:searchp]
-    #   @search_pricex_term = params[:searchpx]
-    #   @books = Book.between_range(@search_pricen_term, @search_pricex_term)
-    # end
-    
-    # if params[:book_language].present?
-    #   @books = @books.where(book_language: params[:book_language])
-    # end 
   end
 
   # GET /books/1 or /books/1.json
@@ -35,7 +26,7 @@ class BooksController < ApplicationController
 
   # GET /books/1/edit
   def edit
-    # @book = Book.find(params[:id])
+   
   end
 
   # POST /books or /books.json
@@ -70,7 +61,6 @@ class BooksController < ApplicationController
   def destroy
     @book = Book.find(params[:id])
     @book.destroy
-    redirect_to books_path
     respond_to do |format|
       format.html { redirect_to books_url, notice: "Book was successfully destroyed." }
       format.json { head :no_content }

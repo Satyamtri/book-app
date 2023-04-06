@@ -7,20 +7,20 @@
          <% Array(@books).each do |book| %>
             <div class="col-3">
                <div class="card">
-                     <div class="image">
+                  <div class="image">
                      <%= image_tag book.avatar_thumbnail %>
+                  </div>
+                  <div class="card-body book-body">
+                     <h3 class="card-title"><%=link_to book.bname, book_path(book) %></h3>
+                     <p class="card-des"><%= truncate(book.description,length: 80)%></p>
+                     Price: <%= book.price%> Rs</br>
+                     Language: <%= book.book_language%>
+                     <div class="card-button mt-2">
+                           <%# <%= button_to "Buy", checkout_create_book_path, params: {id: book.id}, remote: true, class: "btn btn-success m-1" %> 
+                           <button type="button" class="btn btn-success " data-bs-toggle="modal" data-bs-target="#exampleModal<%=book.id%>">Rent</button>
+                           <%= link_to "Buy", book_path(book), class: "btn btn-success ml-2" %>
                      </div>
-                     <div class="card-body book-body">
-                        <h3 class="card-title"><%=link_to book.bname, book_path(book) %></h3>
-                        <p class="card-des"><%= truncate(book.description,length: 80)%></p>
-                        Price: <%= book.price%> Rs</br>
-                        Language: <%= book.book_language%>
-                        <div class="card-button">
-                              <%# <%= button_to "Buy", checkout_create_book_path, params: {id: book.id}, remote: true, class: "btn btn-success m-1" %> 
-                              <button type="button" class="btn btn-success m-1" data-bs-toggle="modal" data-bs-target="#exampleModal<%=book.id%>">Rent</button>
-                              <%= link_to "Buy", book_path(book), class: "btn btn-success m-1" %>
-                        </div>
-                     </div>   
+                  </div>   
             
                <div class="card-button">
                   <div class="modal fade" id="exampleModal<%=book.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

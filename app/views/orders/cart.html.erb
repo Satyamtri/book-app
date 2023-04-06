@@ -16,11 +16,11 @@
                            <strong>Book Price: </strong> <span><%= x.price%></br>
                            <strong>Weeks: </strong> <span><%= x.time_period%></br>
                            <strong>Rent price / week: </strong> 20% </br>
-                           <strong>Total Price: </strong> <span><%= x.total_price%>
+                           <strong>Net Price: </strong> <span><%= x.total_price%>
                      <%else%>
                         <strong >Book Price: </strong> <%= x.price%> Rs </br>
                         <strong>Quantity: </strong> <%= x.quantity%> </br>
-                        <strong>Total Price: </strong> <%= x.total_price%>
+                        <strong>Net Price: </strong> <%= x.total_price%>
                      <%end%>
                      </br>
                      <%= link_to "Back" , books_path, class: "btn btn-success mt-2"%> ||
@@ -29,22 +29,19 @@
                </div>
             <%end%>
          <%else%>
-            <h1>!! Your Shopping Cart is Empty</h1>
+            <h3>!! Your Shopping Cart is Empty</h3>
+            <hr>
             <%= link_to "Continue Shopping", books_path, class: "btn btn-success"%>
          <%end%>
          </div>
          <div class="col-4">
-            <strong><p>Total books :<%= all_quantity.pluck(:quantity).sum { |x| x.nil? ? 1 : x } %></p></strong> 
-            <strong><p>Total price :<%=   all_lineitems.pluck(:total_price).sum %></p><strong>
-            <% if current_user.address.present? %>
-               <%= link_to "Proceed", address_path, class:"btn btn-danger" %>
-            <%else%>
-               <%= link_to "add address", addressform_path, method: :get, class: "btn btn-primary" %>
-            <%end%>
-            
-            
-           <%# <%= button_to "Payment", checkout_create_path, params: {id: @order.id}, remote: true, class:"btn btn-info m-1" %> 
-           
+            <div class= "order-sum">
+               <h3> Order Summary</h3>
+               <hr>
+               <strong><p>Total Books :<%= all_quantity.pluck(:quantity).sum { |x| x.nil? ? 1 : x } %></p></strong> 
+               <strong><p>Order Price :<%=   all_lineitems.pluck(:total_price).sum %></p><strong>
+               <%= link_to "Proceed to buy", address_path, class:"btn btn-danger" %>
+            </div>
          </div>
       </div>
    </div>

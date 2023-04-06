@@ -10,25 +10,25 @@
           <div class="signup-form">
             <h2>Sign up</h2>
 
-            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-              <%= render "devise/shared/error_messages", resource: resource %>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name),html: {id: "admin_faq"}) do |f| %>
+              <%# <%= render "devise/shared/error_messages", resource: resource%>
 
-              <div class="form-group mt-2">
+              <div class="form-group mb-1">
                 <%= f.label :name %><br />
                 <%= f.text_field :name, class:"form-control", autofocus: true, autocomplete: "name" %>
               </div>
               
-              <div class="form-group mt-2">
+              <div class="form-group mb-1">
                 <%= f.label :email %><br />
                 <%= f.email_field :email, class:"form-control", autofocus: true, autocomplete: "email" %>
               </div>
 
-              <div class="form-group mt-2">
+              <div class="form-group mb-1">
                 <%= f.label :ContactNumber %><br/>
                 <%= f.text_field :contactnumber, class:"form-control", autofocus: true, autocomplete: "contactnumber" %>
               </div>
 
-              <div class="field mt-2">
+              <div class="field mb-1">
                 <%= f.label :password %>
                 <% if @minimum_password_length %>
                 <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -36,7 +36,7 @@
                 <%= f.password_field :password, class:"form-control", autocomplete: "new-password" %>
               </div>
 
-              <div class="field mt-3">
+              <div class="field mb-1">
                 <%= f.label :password_confirmation %><br />
                 <%= f.password_field :password_confirmation, class:"form-control", autocomplete: "new-password" %>
               </div>
@@ -54,3 +54,60 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+    $(document).on("turbolinks:load",function(){
+      $("#admin_faq").validate({
+        rules: {
+          "user[name]":{
+
+              required: true
+          },
+        
+          "user[email]":{
+
+                required: true,
+          },
+           "user[contactnumber]":{
+
+            required: true,
+            maxlength: 10,
+            minlength: 10
+          },
+          "user[password]":{
+
+              required: true
+          },
+          "user[password_confirmation]":{
+
+          required: true
+          },
+        },
+        messages: {
+          "user[name]":{
+
+              required: "* Please Enter Your First Name here"
+          },
+          "user[email]":{
+
+              required: "* Please Enter Your E-mail",
+              remote: "* Please enter correct email."
+          },
+          "user[contactnumber]":{
+
+           required: "* Please Enter Your Mobile Number",
+           maxlength: "* Please Enter Maximum 10 digit.",
+           minlength: "* Please Enter Minimum 10 digit."
+          },
+          "user[password]":{
+
+           required: "* Please Enter the password here"
+          },
+          "user[password_confirmation]":{
+
+           required: "* Please Enter the Confirm password here"
+          },
+        },
+      });
+    })
+</script>

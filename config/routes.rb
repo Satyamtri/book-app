@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :categories
   resources :lineitems
   resources :orders
-  resources :webhooks, only: [:create]
+
+  # resources :webhooks, only: [:create]
   
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -19,7 +20,7 @@ Rails.application.routes.draw do
   get '/checkout/success', to: "checkout#success"
   get '/checkout/cancel', to: "checkout#cancel"
   post 'checkout/create', to: "checkout#create"
-  post 'checkout/create_book', to: "checkout#create_book"
+  # post 'checkout/create_book', to: "checkout#create_book"
 
 
   post '/addtocart', to: "orders#add_to_cart"
@@ -31,6 +32,7 @@ Rails.application.routes.draw do
   get '/address', to: "orders#address"
   get '/edit', to: "orders#edit"
   post '/update', to: "orders#update_address"
+  post 'delete_address', to: "orders#delete_address"
 
   get '/payment', to: "orders#payment"
   

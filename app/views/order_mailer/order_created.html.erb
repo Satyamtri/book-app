@@ -1,4 +1,32 @@
-<h1>Hurray, Done</h1>
 
-
-<h1> Hi <%= @user.name %> You order has placed succesfully.</h1>
+ <h1> Hi <%= @user.name %>, Your order has placed succesfully.</h1>
+ <h3> Order Details: </h2>
+        <table class="table table-hover table-striped table-bordeR">
+          <thead>
+            <tr>
+                <th>Book Name</th> 
+                <th>Book Price</th> 
+                 <th>Purchase Type</th> 
+                <th colspan="2">Total Price</th> 
+            </tr>
+          </thead>
+        <tbody>
+          <% @order.lineitems.each do |x| %>
+            <tr>
+                <td><%= x.book.bname %></td>
+                <td><%= x.book.price %> Rs</td>
+                <td><%= x.purchase_type %></td>
+                <% if x.purchase_type=="rent"%>
+                    <td><%= x.total_price%> Rs</td>
+                    <td>(for <%= x.time_period%> Weeks)</td>
+                <%else%>
+                    <td><%= x.total_price%> Rs</td>
+                    <td>(for <%= x.quantity%> Quantity)</td>
+                <%end%>  
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <h3>Total Amount: <%= @total_amount%> rs</h3>
+    <h3>Status: Payment completed</h3>
+    <h3>Thanks for shopping, Visit Again!!</h3>

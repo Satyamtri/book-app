@@ -1,5 +1,5 @@
 <%# <div class = "sidebar"> %>
-<div class="d-flex flex-column flex-shrink-0 p-3 sidebar" style="width: 280px; min-height: calc(100vh - 56px); ">
+<div class="d-flex flex-column flex-shrink-0 p-3 sidebar" style="width: 250px; min-height: calc(100vh - 56px); ">
     <%# <a href="/" class=" align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
       <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
       <span class="fs-4">Sidebar</span>
@@ -22,14 +22,13 @@
       <ul class="nav nav-pills flex-column mb-auto text-center">
       <div class="filter-box">
         <div class="filter-area">
-         <li class="price-title">PRICE</li>
+         <li class="price-title ">PRICE</li>
          <%= form_for "", url: books_path, role: "search", method: :get do %>
             <div class="price-body">
                <p class="price-field"><%= text_field_tag :searchp, @search_pricen_term, placeholder: "Min.." , class: " form-control shadow rounded "%></p>
-               <p class="price-field"><%= text_field_tag :searchpx, @search_pricex_term, placeholder: "Max..", class: " form-control shadow rounded "%></p>
+               <p class="price-field"><%= text_field_tag :searchpx, @search_pricex_term, placeholder: "Max..", class: " form-control shadow rounded ml-1 "%></p>
             </div>
             </br>
-            <%# <li class="language-title">LANGUAGE</li> %>
             <%# <p class="price-field"><%= text_field_tag :book_language, @book_language, placeholder: "lang..", class: " form-control shadow rounded "%>
             <div class="check-box-align">
               <div>

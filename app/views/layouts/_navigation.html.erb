@@ -14,30 +14,26 @@
             <li class="nav-item"><%= link_to current_user.name, new_user_registration_path, class: "nav-link" %></li>
             <%= image_tag(current_user.avatar_thumbnail,  :class=> "img-circular") %>
             <li class="nav-item"><%= link_to 'All Books', books_path, class: "nav-link" %></li>
-            
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                  Categories
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <% all_categories.each do |category |%>
-                  <li><%= link_to category.title, category_path(category), class: "dropdown-item"%></li>
-                <%end %>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    Setting
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
-                  <li><%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %></li>
+
+            <div class=" nav-item dropdown">
+              <a class=" nav-link dropbtn">Categories</a>
+                <div class="dropdown-content">
+                  <% all_categories.each do |category |%>
+                    <li><%= link_to category.title, category_path(category), class: "dropdown-item"%></li>
+                  <%end %>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
+                </div>
+            </div>
+
+              <div class=" nav-item dropdown">
+                <a class=" nav-link dropbtn">Setting</a>
+                <div class="dropdown-content">
+                  <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+                  <li><%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </div>
+              </div>
 
             <li><%= link_to '', cart_path,  class:"fa fa-shopping-cart nav-item nav-link  m-auto cart-icon" %></li>
             <%# <li class="text-light"><%= current_user.orders.last.lineitems.count%>

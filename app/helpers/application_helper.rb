@@ -16,8 +16,4 @@ module ApplicationHelper
         current_user.orders.last.lineitems
     end 
     
-    def all_quantity
-        current_user.orders.last.lineitems
-    end
-
 end

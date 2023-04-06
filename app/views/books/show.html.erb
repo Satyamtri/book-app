@@ -7,16 +7,15 @@
          <div class="col-8" >
             <strong><p class="card1-text1"><%= simple_format(@book.bname) %></p></strong>
             <p class="card1-text1"><%= simple_format(@book.description) %></p>
+            <strong><p>Category: <%= @book.category.title%></p></strong>
             <% if current_user.admin? %>
                <%= link_to 'Edit', edit_book_path(@book), class: "btn btn-success" %> |
-               <%= link_to 'Back', books_path, class: "btn btn-success" %>
+               <%= link_to 'Back', books_path, class: "btn btn-success" %> |
+               <%= link_to "Delete", book_path(@book), class: "btn btn-success", method: :delete, data: {confirm: "are you sure!!"} %>
             <% else %>
                <%= link_to 'Back', books_path, class: "btn btn-success" %></br>
                <strong><p class="mt-4">Price: <%= @book.price%> rs</p></strong>
                <strong><p>Category: <%= @book.category.title%></p></strong>
-               <%# <div class="book-price">    %>
-                  <%# <%= link_to 'Add to cart', addtocart_path(@book), method: :post, class:"btn btn-success m-1" %> 
-               <%# </div> %>
                <%= form_with(url: addtocart_path(@book), method: :post) do |form| %>
                   <div class="field mt-3">
                      <%= form.label  "Quantity" %>

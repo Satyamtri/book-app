@@ -3,7 +3,7 @@
         <div class="address-form">
             <div class="form shadow rounded">
                 <div class="otp-form">
-                    <%= form_with scope: :address, url: update_path(@address), method: :post do |form| %>
+                    <%= form_with scope: :address, url: update_path, method: :post do |form| %>
                     <div class="field mt-2">
                         <%= form.label :FirstName %></br>
                         <%= form.text_field :first_name, class:"form-control shadow rounded" %>

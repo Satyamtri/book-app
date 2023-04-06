@@ -22,7 +22,7 @@ body{
 }
 .banner {
     min-height: calc(100vh - 71px);
-    background: linear-gradient(45deg, rgba(45, 27, 161, 0.7), rgba(29, 210, 177, 0) 100%) , url("jumbo.jpg");
+    background: linear-gradient(45deg, rgba(45, 27, 161, 0.7), rgba(29, 210, 177, 0.1) 100%) , url("jumbo.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -90,7 +90,7 @@ body{
     }
 }
 .filter-area{
-    padding: 20px 15px;
+    padding: 20px 0px;
     text-align: center ;
 }
 .price-body{
@@ -125,18 +125,61 @@ body{
     font-size: 24px;
 }
 .sidebar{
-    background: linear-gradient(45deg, rgba(45, 27, 161, 0.7), rgba(29, 210, 177, 0.1) 100%);
+    background: linear-gradient(45deg, rgba(29, 210, 177, 0.1), rgba(45, 27, 161, 0.7) 100%);
 }
 .otp-form{
     padding: 20px;
 }
 .address-form{
+    width: 440px;
     padding: 25px 0;
+}
+.error{
+    color: red;
+    margin: 0;
 }
 
 .address-content{
     padding: 10px 15px 10px;
 }
+.address-delete{
+    font-size: 20px;
+}
+.address-check{
+    padding-left: 10px;
+}
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  /* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: rgba(45, 27, 161, 0.2);}
 //pagination
 
 .flickr_pagination {
@@ -178,4 +221,25 @@ body{
     align-items: flex-start;
     margin-left: 35px;
     gap: 5px;
+}
+
+.notification#myAlert{
+    position: fixed;
+    top: 20px;
+    right: 30%;
+    color: black;
+    background-color:#86e49d;
+    z-index: 999;
+    // padding: 10px;
+    border-radius: 10px;
+   .notice, .alert {
+    padding-left: 10px;
+    padding-right: 10px;
+   }
+   .notice {
+    padding-top: 10px;
+   }
+   .alert{
+    padding-bottom: 10px;
+   }
 }
