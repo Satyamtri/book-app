@@ -3,7 +3,7 @@
         <div class="address-form">
             <div class="form shadow rounded">
                 <div class="otp-form">
-                <%= form_with scope: :address, url: addaddress_path, method: :post do |form| %>
+                <%= form_with scope: :address, url: addaddress_path,html: {id: "admin_faq"}, method: :post do |form| %>
                 <div class="form-group">
                     <%= form.label :FirstName %></br>
                     <%= form.text_field :first_name,  class:"form-control shadow rounded" %>
@@ -48,3 +48,84 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).on("turbolinks:load",function(){
+      $("#admin_faq").validate({
+        rules: {
+          "address[first_name]":{
+
+              required: true
+          },
+        
+          "address[last_name]":{
+
+                required: true,
+          },
+           "address[contactnumber]":{
+
+            required: true,
+            maxlength: 10,
+            minlength: 10
+          },
+          "address[pincode]":{
+
+              required: true
+          },
+          "address[city]":{
+
+          required: true
+          },
+          "address[state]":{
+
+          required: true
+          },
+          "address[country]":{
+
+          required: true
+          },
+          "address[landmark]":{
+
+          required: true
+          },
+        },
+        messages: {
+          "address[first_name]":{
+
+              required: "* Please Enter Your First Name here"
+          },
+           "address[last_name]":{
+
+              required: "* Please Enter Your Last Name here"
+          },
+      
+          "address[contactnumber]":{
+
+           required: "* Please Enter Your Mobile Number",
+           maxlength: "* Please Enter Maximum 10 digit.",
+           minlength: "* Please Enter Minimum 10 digit."
+          },
+           "address[pincode]":{
+
+           required: "* Please Enter Your pincode.",
+          },
+          "address[city]":{
+
+           required: "* Please Enter the city"
+          },
+           "address[state]":{
+
+           required: "* Please Enter the state"
+          },
+           "address[country]":{
+
+           required: "* Please Enter the country"
+          },
+          "address[landmark]":{
+
+           required: "* Please Enter the landmark"
+          },
+        },
+      });
+    })
+</script>

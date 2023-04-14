@@ -102,6 +102,17 @@ body{
 .price-title, .language-title{
     margin-bottom: 10px;
     font-weight: 500;
+    color: white;
+    font-size: 20px;
+}
+.english, .hindi{
+    font-size: 20px;
+}
+.go_btn{
+    background: #03a9f4;
+    min-width: 100px;
+    margin-top: 30px;
+    border: none;
 }
 .img-circular{
     width: 45px;
@@ -144,9 +155,17 @@ body{
 }
 .address-delete{
     font-size: 20px;
+    color: #e20f00;
 }
 .address-check{
     padding-left: 10px;
+}
+
+.house-banner img{
+    height: 340px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
   
   /* The container <div> - needed to position the dropdown content */

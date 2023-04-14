@@ -1,3 +1,4 @@
+<% @order.update(state: 0)%>
 <div class="container">
    <div class="book-box">
       <div class="row ">
@@ -23,15 +24,15 @@
                         <strong>Net Price: </strong> <%= x.total_price%>
                      <%end%>
                      </br>
-                     <%= link_to "Back" , books_path, class: "btn btn-success mt-2"%> ||
-                     <%= link_to "Remove" , lineitem_path(x), class: "btn btn-success mt-2", method: :delete, data: {confirm: "are you sure!!"} %>
+                     <%= link_to "Back" , books_path, class: "btn btn-outline-dark mt-2"%>
+                     <%= link_to "Remove" , lineitem_path(x), class: "btn btn-danger mt-2", method: :delete, data: {confirm: "are you sure!!"} %>
                   </div>
                </div>
             <%end%>
          <%else%>
             <h3>!! Your Shopping Cart is Empty</h3>
             <hr>
-            <%= link_to "Continue Shopping", books_path, class: "btn btn-success"%>
+            <%= link_to "Continue Shopping", books_path, class: "btn btn-success mt-2"%>
          <%end%>
          </div>
          <div class="col-4">
@@ -40,7 +41,7 @@
                <hr>
                <strong><p>Total Books :<%= all_quantity.pluck(:quantity).sum { |x| x.nil? ? 1 : x } %></p></strong> 
                <strong><p>Order Price :<%=   all_lineitems.pluck(:total_price).sum %></p><strong>
-               <%= link_to "Proceed to buy", address_path, class:"btn btn-danger" %>
+               <%= link_to "Proceed to buy", address_path, class:"btn btn-warning" %>
             </div>
          </div>
       </div>

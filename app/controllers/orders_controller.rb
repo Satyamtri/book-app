@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
     
     def index
        @orders = Order.all
-       @orders = Order.paginate(page: params[:page], per_page: 10)
+       @orders = Order.paginate(page: params[:page], per_page: 2)
     end
     
     def show
@@ -27,8 +27,17 @@ class OrdersController < ApplicationController
         end 
         book = Book.find(params[:format])
         book_price = book.price 
-        total_price =  book.price * params[:quantity].to_i
-        @order.lineitems.create(book_id: params[:format], price: book_price, purchase_type: "buy", quantity: params[:quantity], total_price: total_price)
+        total_price =  book.price * params[:quantity].to_i 
+        
+        #Check current product in lineitem
+        
+        books_id = @order.lineitems.pluck(:book_id)
+        if books_id.include?(book.id)
+           current_lineitem =  @order.lineitems.where(book_id: book.id).last
+           current_lineitem.update(quantity: (params[:quantity].to_i + current_lineitem.quantity).to_s, total_price: total_price + (book.price * current_lineitem.quantity).to_i)
+        else 
+            @order.lineitems.create(book_id: params[:format], price: book_price, purchase_type: "buy", quantity: params[:quantity], total_price: total_price)
+        end 
         redirect_to cart_path
     end 
 

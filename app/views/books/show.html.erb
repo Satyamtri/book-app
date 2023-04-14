@@ -13,14 +13,13 @@
                <%= link_to 'Back', books_path, class: "btn btn-success" %> |
                <%= link_to "Delete", book_path(@book), class: "btn btn-success", method: :delete, data: {confirm: "are you sure!!"} %>
             <% else %>
-               <%= link_to 'Back', books_path, class: "btn btn-success" %></br>
-               <strong><p class="mt-4">Price: <%= @book.price%> rs</p></strong>
-               <strong><p>Category: <%= @book.category.title%></p></strong>
+               <%# <%= link_to 'Back', books_path, class: "btn btn-success" %>
+               <strong><p >Price: <%= @book.price%> rs</p></strong>
                <%= form_with(url: addtocart_path(@book), method: :post) do |form| %>
                   <div class="field mt-3">
-                     <%= form.label  "Quantity" %>
-                     <%= form.select :quantity, options_for_select(%i[1 2 3 4 5 6 7 8 9 10]) %>
-                     <%= form.submit  "Add to cart", class: "btn btn-success m-1" %>
+                     <strong><%= form.label  "Quantity" %></strong>
+                     <%= form.select :quantity, options_for_select(%i[1 2 3 4 5 6 7 8 9 10]) %> </br>
+                     <%= form.submit  "Add to cart", class: "btn btn-success mt-2" %>
                   </div>
                <%end%>
             <% end %>

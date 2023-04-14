@@ -3,35 +3,42 @@
    <div class="book-box">
    <h3>YOUR ADDRESSES :-</h3>
    <hr>
-        <div class="col-6 p-0">
-        <%= form_for "", url: checkout_create_path, remote: true,  method: :post do %>
-            <% @addresses.each do |add| %>
-                <div class="card address-check">
-                    <div class="address-content">
-                        <input class="form-check-input" type="radio" name="address" value="<%= add.id%>" id="flexRadioDefault1">
-                        <span><b><%=add.first_name%></b></span>
-                        <span><b><%=add.last_name %>,</b></span>
-                        <span><%=add.landmark%>,</span>
-                        <span><%=add.city%>,</span>
-                        <span><%=add.state.upcase%>,</span>
-                        <span><%=add.pincode%>,</span>
-                        <span><%=add.country.upcase%>,</span>
-                        <span>Phone number: <%=add.contactnumber%>,</span>
-                        <div>
-                        <%# <%= link_to "", edit_path(add), method: :get, class: "fa fa-edit address-edit"%> 
-                        <%= link_to "" , delete_address_path(address: add), class: "fa fa-trash address-delete ", method: :post, data: {confirm: "are you sure!!"} %>
+   <div class="row">
+        <div class="col-6 p-0 mt-5">
+            <%= form_for "", url: checkout_create_path, remote: true,  method: :post do %>
+                <% @addresses.each do |add| %>
+                    <div class="card address-check">
+                        <div class="address-content">
+                            <input class="form-check-input" type="radio" name="address" value="<%= add.id%>" id="flexRadioDefault1">
+                            <span><b><%=add.first_name%></b></span>
+                            <span><b><%=add.last_name %>,</b></span>
+                            <span><%=add.landmark%>,</span>
+                            <span><%=add.city%>,</span>
+                            <span><%=add.state.upcase%>,</span>
+                            <span><%=add.pincode%>,</span>
+                            <span><%=add.country.upcase%>,</span>
+                            <span>Phone number: <%=add.contactnumber%>,</span>
+                            <div>
+                            <%# <%= link_to "", edit_path(add), method: :get, class: "fa fa-edit address-edit"%> 
+                            <%= link_to "" , delete_address_path(address: add), class: "fa fa-trash address-delete ", method: :post, data: {confirm: "are you sure!!"} %>
+                            </div>
                         </div>
                     </div>
-                </div>
-                </br>
-            <%end %>
+                    </br>
+                <%end %>
 
-            <div class="card-button">
-                <%= hidden_field_tag :id , @order.id %>
-                <p><%= link_to "Add address", addressform_path, method: :get, class: "btn btn-primary" %></p>
-                <p><%= submit_tag "Payment", class:"btn btn-dark ml-2 "%></p>
+                <div class="card-button">
+                    <%= hidden_field_tag :id , @order.id %>
+                    <p><%= link_to "Add address", addressform_path, method: :get, class: "btn btn-primary" %></p>
+                    <p><%= submit_tag "Payment", class:"btn btn-dark ml-2 "%></p>
+                </div>
+            <%end%>
+        </div>
+        <div class="col-6">
+            <div class="house-banner">
+                <%= image_tag("house3.png") %>
             </div>
-        <%end%>
+        </div>
     </div>
 </div> 
        
