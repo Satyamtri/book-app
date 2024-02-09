@@ -43,9 +43,5 @@ Rails.application.routes.draw do
   post 'generate_otp', to: 'pages#generate_otp'
   get 'otp_verify', to: 'pages#otp_verify'
   post 'otp_verification', to: 'pages#otp_verification'
-
-
-
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

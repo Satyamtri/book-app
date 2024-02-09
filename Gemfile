@@ -65,7 +65,7 @@ gem 'omniauth-google-oauth2'
 # gem 'simple_form', '~> 5.2'
 # gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'sidekiq', '~> 6.5.5'
-
+gem 'bootstrap', '~> 4.6'
 
 gem 'phonelib'
 gem "twilio-ruby", "~> 3.11"
